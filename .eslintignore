@@ -1,0 +1,6 @@
+/build/
+/node_modules
+/config/
+/dist/
+/*.js
+/**/#*.js
