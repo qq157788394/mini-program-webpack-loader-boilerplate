@@ -1,6 +1,6 @@
 {
-  "name": "wpwxapp",
-  "version": "1.0.0",
+  "name": "mini-program-webpack-loader-boilerplate",
+  "version": "0.0.1",
   "description": "小程序骨架",
   "scripts": {
     "dev": "webpack --watch --progress --mode=development --config build/webpack.config.dev.js",
@@ -8,7 +8,7 @@
     "lint": "eslint --ext .js src"
   },
   "main": "dist/app.js",
-  "author": "huangzhuo",
+  "author": "qq157788394",
   "license": "MIT",
   "private": true,
   "devDependencies": {
@@ -19,11 +19,8 @@
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-env": "^1.7.0",
     "babel-preset-stage-0": "^6.24.1",
-    "babel-preset-stage-2": "^6.24.1",
-    "cache-loader": "^1.2.5",
     "clean-webpack-plugin": "^1.0.0",
     "copy-webpack-plugin": "^4.6.0",
-    "css-loader": "^1.0.1",
     "cssnano": "^4.1.7",
     "dotenv-webpack": "^1.5.7",
     "eslint": "^5.9.0",
