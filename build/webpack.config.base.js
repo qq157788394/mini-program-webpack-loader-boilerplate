@@ -43,11 +43,11 @@ module.exports = {
       to: path.resolve(__dirname, utils.resolve('dist/icons'))
     }]),
     new MiniPlugin({
-      extfile: false,
+      extfile: true
       // setSubPackageCacheGroup
     }),
     new Dotenv({
-      path: path.resolve(__dirname, utils.resolve(`.env${mode && mode !== 'none' ? `.${mode}` : ''}`))
+      path: path.resolve(__dirname, utils.resolve(`.env${(mode && mode !== 'none' && mode !== '') ? `.${mode}` : ''}`))
     })
   ],
   module: {
@@ -75,7 +75,7 @@ module.exports = {
         test: /.wxml/,
         use: [
           fileLoader('[path][name].[ext]'),
-          'mini-program-webpack-loader',
+          'mini-program-webpack-loader'
         ]
       },
       {
@@ -90,9 +90,7 @@ module.exports = {
         test: /\.wxss$/,
         use: [
           fileLoader('[path][name].[ext]'),
-          'postcss-loader',
-          'less-loader',
-          'mini-program-webpack-loader',
+          'mini-program-webpack-loader'
         ]
       },
       {
@@ -100,8 +98,7 @@ module.exports = {
         use: [
           fileLoader('[path][name].wxss'),
           'postcss-loader',
-          'less-loader',
-          'mini-program-webpack-loader'
+          'less-loader'
         ]
       },
       {
@@ -128,7 +125,7 @@ module.exports = {
               formatter: require('eslint-friendly-formatter')
             }
           },
-          'mini-program-webpack-loader',
+          'mini-program-webpack-loader'
         ]
       },
       {
