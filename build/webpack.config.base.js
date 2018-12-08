@@ -1,11 +1,11 @@
 const path = require('path')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const MiniPlugin = require('mini-program-webpack-loader').plugin
-// const ImportComponent = require('import-weapp-component')
 const Yargs = require('yargs')
 const Dotenv = require('dotenv-webpack')
 const utils = require('./utils')
-const mode = Yargs.argv.mode
+// const mode = Yargs.argv.mode
+const mode = process.env.NODE_ENV
 
 const fileLoader = name => ({
   loader: 'file-loader',
@@ -79,6 +79,14 @@ module.exports = {
         ]
       },
       {
+        test: /\.json/,
+        type: 'javascript/auto',
+        use: [
+          fileLoader('[path][name].[ext]'),
+          'mini-program-webpack-loader'
+        ]
+      },
+      {
         test: /\.wxss$/,
         use: [
           fileLoader('[path][name].[ext]'),
@@ -87,22 +95,21 @@ module.exports = {
           'mini-program-webpack-loader',
         ]
       },
-      // {
-      //   test: /\.less$/,
-      //   use: [
-      //     fileLoader('[path][name].wxss'),
-      //     'postcss-loader',
-      //     'less-loader',
-      //     'mini-program-webpack-loader'
-      //   ]
-      // },
+      {
+        test: /\.less$/,
+        use: [
+          fileLoader('[path][name].wxss'),
+          'postcss-loader',
+          'less-loader',
+          'mini-program-webpack-loader'
+        ]
+      },
       {
         test: /\.scss$/,
         use: [
           fileLoader('[path][name].wxss'),
           'postcss-loader',
-          'sass-loader',
-          'mini-program-webpack-loader'
+          'sass-loader'
         ]
       },
       {
@@ -122,14 +129,6 @@ module.exports = {
             }
           },
           'mini-program-webpack-loader',
-        ]
-      },
-      {
-        test: /\.json/,
-        type: 'javascript/auto',
-        use: [
-          fileLoader('[path][name].[ext]'),
-          'mini-program-webpack-loader'
         ]
       },
       {

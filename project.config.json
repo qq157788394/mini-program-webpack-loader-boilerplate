@@ -13,7 +13,7 @@
 	"miniprogramRoot": "dist/",
 	"compileType": "miniprogram",
 	"libVersion": "2.2.5",
-	"appid": "",
+	"appid": "wx0ffbc046375c3bc6",
 	"projectname": "miniprogram-quickstart",
 	"isGameTourist": false,
 	"condition": {

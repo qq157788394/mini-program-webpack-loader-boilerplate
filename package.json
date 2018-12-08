@@ -3,8 +3,8 @@
   "version": "0.0.1",
   "description": "小程序骨架",
   "scripts": {
-    "dev": "webpack --watch --progress --mode=development --config build/webpack.config.dev.js",
-    "build": "webpack --progress --mode=production --config build/webpack.config.prod.js",
+    "dev": "NODE_ENV=development webpack --watch --progress --mode=production --config build/webpack.config.dev.js",
+    "build": "NODE_ENV=production webpack --progress --mode=production --config build/webpack.config.prod.js",
     "lint": "eslint --ext .js src"
   },
   "main": "dist/app.js",
