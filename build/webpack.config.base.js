@@ -4,7 +4,6 @@ const MiniPlugin = require('mini-program-webpack-loader').plugin
 const Yargs = require('yargs')
 const Dotenv = require('dotenv-webpack')
 const utils = require('./utils')
-// const mode = Yargs.argv.mode
 const mode = process.env.NODE_ENV
 
 const fileLoader = name => ({
@@ -30,8 +29,8 @@ module.exports = {
   resolve: {
     // 你可以在 json wxml wxss scss 中使用这里配置的 alias
     alias: {
-      src: path.resolve(__dirname, utils.resolve('src')),
       '@': path.resolve(__dirname, utils.resolve('src')),
+      src: path.resolve(__dirname, utils.resolve('src')),
       pages: path.resolve(__dirname, utils.resolve('src/pages')),
       utils: path.resolve(__dirname, utils.resolve('src/utils')),
       components: path.resolve(__dirname, utils.resolve('src/components'))
@@ -43,7 +42,7 @@ module.exports = {
       to: path.resolve(__dirname, utils.resolve('dist/icons'))
     }]),
     new MiniPlugin({
-      extfile: false
+      // extfile: true,
       // setSubPackageCacheGroup
     }),
     new Dotenv({
@@ -70,6 +69,25 @@ module.exports = {
             }
           }
         ],
+      },
+      {
+        test: /.wxs$/,
+        use: [
+          fileLoader('[path][name].[ext]'),
+          {
+            loader: 'babel-loader',
+            options: {
+              cacheDirectory: true // cacheDirectory用于缓存babel的编译结果,加快重新编译的速度
+            }
+          },
+          {
+            loader: 'eslint-loader',
+            options: {
+              formatter: require('eslint-friendly-formatter')
+            }
+          },
+          'mini-program-webpack-loader'
+        ]
       },
       {
         test: /.wxml/,
@@ -107,25 +125,6 @@ module.exports = {
           fileLoader('[path][name].wxss'),
           'postcss-loader',
           'sass-loader'
-        ]
-      },
-      {
-        test: /.wxs$/,
-        use: [
-          fileLoader('[path][name].[ext]'),
-          {
-            loader: 'babel-loader',
-            options: {
-              cacheDirectory: true // cacheDirectory用于缓存babel的编译结果,加快重新编译的速度
-            }
-          },
-          {
-            loader: 'eslint-loader',
-            options: {
-              formatter: require('eslint-friendly-formatter')
-            }
-          },
-          'mini-program-webpack-loader'
         ]
       },
       {

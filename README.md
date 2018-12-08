@@ -1,12 +1,12 @@
 # mini-program-webpack-loader-boilerplate
 
-使用 `webpack4`, `babel`, `eslint`, `less`, `dotenv` 开发的微信小程序项目脚手架
+使用 `webpack4`, `babel`, `eslint`, `less`, `scss`, `dotenv` 开发的微信小程序项目脚手架
 
 ## 功能
 
 * 通过 `babel` 支持更丰富的 `ES6` 兼容
 * 通过 `eslint` 检查代码规范，使用 `standard` 规范
-* 通过 `less` 语法编写 `wxss` , 并用 `autoprefixer` 添加浏览器兼容
+* 通过 `less` or `scss` 语法编写 `wxss` , 并用 `postcss-preset-env` 添加浏览器兼容
 * 支持通过配置 `alias` 来避免 `../../../` 之类的模块引用
 * 提供 `production` 和 `development` 两个环境变量
 * 在 `production` 环境下压缩代码
@@ -38,7 +38,7 @@
 ## 说明
 
 * 本项目纯在练手，跑起来是能打包了，但是没经过实际的测试
-* less的支持，现在是在wxss里面写less的语法，然后用less-loader进行了编译，比较不正规
+* `app.wxss` 文件，不能使用预编译器，但可以在里面 `@import "./your/style/files.less";`
 
 ## License
 

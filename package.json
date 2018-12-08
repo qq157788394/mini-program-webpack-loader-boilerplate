@@ -3,7 +3,7 @@
   "version": "0.0.2",
   "description": "小程序骨架",
   "scripts": {
-    "dev": "NODE_ENV=development webpack --watch --progress --mode=production --config build/webpack.config.dev.js",
+    "dev": "NODE_ENV=development webpack --watch --progress --mode=development --config build/webpack.config.dev.js",
     "build": "NODE_ENV=production webpack --progress --mode=production --config build/webpack.config.prod.js",
     "lint": "eslint --fix --ext .js src"
   },
