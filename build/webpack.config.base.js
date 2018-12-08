@@ -43,7 +43,7 @@ module.exports = {
       to: path.resolve(__dirname, utils.resolve('dist/icons'))
     }]),
     new MiniPlugin({
-      extfile: true
+      extfile: false
       // setSubPackageCacheGroup
     }),
     new Dotenv({
