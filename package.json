@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "NODE_ENV=development webpack --watch --progress --mode=production --config build/webpack.config.dev.js",
     "build": "NODE_ENV=production webpack --progress --mode=production --config build/webpack.config.prod.js",
-    "lint": "eslint --ext .js src"
+    "lint": "eslint --fix --ext .js src"
   },
   "main": "dist/app.js",
   "author": "qq157788394",
